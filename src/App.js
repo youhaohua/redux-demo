@@ -4,6 +4,12 @@ import logo from './logo.svg';
 import './App.css';
 import {add_gun,remove_gun,addAsync} from "./index.redux"
 import {connect} from "react-redux"
+@connect(
+    
+  state=>( {num:state.time } ),
+  {add_gun,remove_gun,addAsync}
+
+ )
 class App extends Component {
 
   render() {
@@ -31,7 +37,7 @@ class App extends Component {
     );
   }
 }
-const mapStatetoProps=(state)=>{
+/* const mapStatetoProps=(state)=>{
     
      return {num:state.time}
 }
@@ -39,5 +45,5 @@ const actionCreators={
   add_gun,remove_gun,addAsync
 
 }
-App=connect(mapStatetoProps,actionCreators)(App)
+App=connect(mapStatetoProps,actionCreators)(App) */
 export default App;
