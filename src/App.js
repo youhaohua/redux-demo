@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 //import {add_gun,remove_gun} from "./index.redux"
 import logo from './logo.svg';
 import './App.css';
-
+import {add_gun,remove_gun,addAsync} from "./index.redux"
+import {connect} from "react-redux"
 class App extends Component {
 
   render() {
+    const num=this.props.num
     const add_gun=this.props.add_gun
     const remove_gun=this.props.remove_gun
     const addAsync=this.props.addAsync
     const store=this.props.store
-    const current=store.getState().time
     return (
      /* <div className="App">
         <header className="App-header">
@@ -22,13 +23,21 @@ class App extends Component {
         </p>
       </div> */
       <div>
-      <h1 style={{textAlign:"center"}}>数字{current}</h1>
-      <button onClick={()=>{store.dispatch(add_gun())}} >加</button>
-      <button onClick={()=>{store.dispatch(remove_gun())}} >减</button>
-      <button onClick={()=>{store.dispatch(addAsync())}} >异步</button>
+      <h1 style={{textAlign:"center"}}>数字{num}</h1>
+      <button onClick={add_gun} >加</button>
+      <button onClick={remove_gun} >减</button>
+      <button onClick={addAsync} >异步</button>
       </div>
     );
   }
 }
+const mapStatetoProps=(state)=>{
+    
+     return {num:state.time}
+}
+const actionCreators={
+  add_gun,remove_gun,addAsync
 
+}
+App=connect(mapStatetoProps,actionCreators)(App)
 export default App;
