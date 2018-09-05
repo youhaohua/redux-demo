@@ -8,6 +8,7 @@ class App extends Component {
   render() {
     const add_gun=this.props.add_gun
     const remove_gun=this.props.remove_gun
+    const addAsync=this.props.addAsync
     const store=this.props.store
     const current=store.getState().time
     return (
@@ -23,7 +24,8 @@ class App extends Component {
       <div>
       <h1 style={{textAlign:"center"}}>数字{current}</h1>
       <button onClick={()=>{store.dispatch(add_gun())}} >加</button>
-      <button onClick={()=>{store.dispatch(remove_gun())   }} >减</button>
+      <button onClick={()=>{store.dispatch(remove_gun())}} >减</button>
+      <button onClick={()=>{store.dispatch(addAsync())}} >异步</button>
       </div>
     );
   }
